@@ -1,0 +1,40 @@
+# Configuration reference only. Supply real values through deployment secrets.
+# Do not copy this file or secrets into the API image.
+ENVIRONMENT=azure
+AZURE_CLIENT_ID=<managed-identity-client-id>
+COSMOS_ENDPOINT=https://<new-vitrine-account>.documents.azure.com:443/
+COSMOS_DATABASE=vitrine
+COSMOS_CONTAINER=retail
+AZURE_STORAGE_ACCOUNT=<new-vitrine-storage-account>
+AZURE_STORAGE_CONTAINER=retail
+FOUNDRY_PROJECT_ENDPOINT=https://<new-vitrine-account>.services.ai.azure.com/api/projects/vitrine-retail
+AGENT_MODEL_DEPLOYMENT=retail-agent
+AZURE_OPENAI_ENDPOINT=https://<new-vitrine-account>.openai.azure.com/
+VISION_MODEL_DEPLOYMENT=retail-vision
+APP_PASSWORD=<secret-at-least-12-characters>
+PUBLIC_ORIGIN=https://<vitrine-app-host-without-trailing-slash>
+# Optional: SESSION_SECRET must be at least 32 characters if supplied.
+# Otherwise a context-separated HMAC key is derived from APP_PASSWORD.
+# SESSION_SECRET=<independent-signing-secret>
+#
+# Explicit offline tests/local exploration ONLY (still authenticated over HTTPS):
+# ENVIRONMENT=local
+# LOCAL_MODE=true
+# LOCAL_DATABASE=backend/.local/retail.db
+# No local footage, detections, or managed-agent output are fabricated.
+#
+# Container entry: python -m uvicorn retail.app:app --host 0.0.0.0 --port 8080 --workers 1
+# Bootstrap job, same image: python -m retail.bootstrap
+# From project root on Windows:
+# $env:PYTHONPATH = (Resolve-Path .\backend).Path
+# python -m unittest discover -s .\backend\tests -v
+#
+# Bootstrap writes only named Foundry agent versions and the store-demo
+# foundry-config document. API startup never creates resources or definitions.
+# Canonical state: id=state, pk=store-demo, conditional ETag writes, 30-second lease.
+# Worker clock: id=clock, pk=store-demo, updated every 2 seconds plus viewer writes.
+# Model audit: pk=agent-runs, last 100 runs retained across scenario resets.
+# Snapshot: last 10 current-epoch runs, 100 POS events, 240 time points.
+# Experiments: equal 60-s simulated windows; values are net cents per 100 visits.
+# Only sales count toward transactions; returns subtract from revenue and units.
+# Average basket is net revenue divided by sale transaction count.

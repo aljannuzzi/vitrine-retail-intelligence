@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "runtime": {
+    "environment": "azure",
+    "python": "3.12",
+    "cpu": 4,
+    "memoryGiB": 8,
+    "replicas": {"min": 1, "max": 1},
+    "deployment": {
+      "firstDeploy": "Only deploy when no vision worker is already running.",
+      "updates": "Stop/deactivate the old worker revision and verify all its replicas have terminated before starting a replacement. ACA single revision mode and maxReplicas=1 alone do not prevent rollout overlap.",
+      "distributedLease": false,
+      "overlap": "Concurrent writers are unsupported. Observation metadata and conditional frame downloads fail closed for mismatched bytes but do not serialize Cosmos publication."
+    },
+    "command": "python -m vision.worker",
+    "health": {"path": "/healthz", "port": 8081, "readyWhen": "model loaded and cloud polling loop healthy within 120 seconds"},
+    "dockerBuild": "docker build --platform linux/amd64 -f vision\\Dockerfile -t vitrine-vision .",
+    "acrBuild": "az acr build --registry <registry> --image vitrine-vision:<tag> --file vision\\Dockerfile <small-context>",
+    "acrContext": "Caller must stage only vision/__init__.py, worker.py, detector.py, seed_model.py, requirements.txt, run-config.json, Dockerfile and licenses/*.txt under a vision directory. Exclude .local, authoring, assets and credentials. Older az acr build clients may ignore Dockerfile.dockerignore. This task does not run Azure builds.",
+    "requiredEnvironment": ["ENVIRONMENT", "AZURE_CLIENT_ID", "COSMOS_ENDPOINT", "AZURE_STORAGE_ACCOUNT"],
+    "defaults": {
+      "COSMOS_DATABASE": "vitrine",
+      "COSMOS_CONTAINER": "retail",
+      "AZURE_STORAGE_CONTAINER": "retail",
+      "VISION_INTERVAL_SECONDS": "5",
+      "VISION_REQUEST_TTL_SECONDS": "30",
+      "DETECTION_THRESHOLD": "0.5",
+      "MODEL_PATH": "/opt/vitrine/model"
+    },
+    "credentials": "ManagedIdentityCredential with required user-assigned AZURE_CLIENT_ID; no keys, developer credentials, local truth, resource creation or runtime weight download"
+  },
+  "model": {
+    "id": "PekingU/rtdetr_v2_r18vd",
+    "revision": "5650961749fa93567c0d46fc7f43ea4f9e914107",
+    "classes": ["RTDetrV2ForObjectDetection", "RTDetrImageProcessor"],
+    "remoteCode": false,
+    "device": "cpu",
+    "torchThreadsMaximum": 4,
+    "seedCommand": "python -m vision.seed_model",
+    "seedCache": "Reuse an existing validated manifest without Hub access. Otherwise resolve only config.json, preprocessor_config.json and model.safetensors from the pinned local snapshot; download missing artifacts only. Runtime Detector always uses local_files_only.",
+    "manifest": "manifest.json with modelId, revision and SHA-256 hashes of config.json, preprocessor_config.json and model.safetensors; validated before model load",
+    "licenses": "vision/licenses contains Apache-2.0 license text and model attribution; copied into the detector image",
+    "buildContext": "vision/Dockerfile.dockerignore excludes .local, credentials, source assets, authoring environments, frontend and backend from this image build"
+  },
+  "pilot": {
+    "import": "from vision.detector import Detector",
+    "initialize": "detector = Detector(model_path=path_to_seeded_local_folder)",
+    "detect": "detections = detector.detect(image)",
+    "input": "PIL.Image or HxWx3 uint8 NumPy array in RGB order",
+    "output": [{"label": "person", "score": 0.9, "box": [0.1, 0.2, 0.4, 0.8]}],
+    "outputNote": "Example shape only, not a measured detection. Boxes are normalized xyxy against input pixels. No downloads are attempted by Detector.",
+    "tests": "python -B -m unittest discover -s vision\\tests -p test*.py",
+    "realModelTests": "$env:VITRINE_TEST_MODEL=(Resolve-Path .local\\model).Path; $env:HF_HUB_OFFLINE='1'; $env:TRANSFORMERS_OFFLINE='1'; & .\\.local\\authoring-python\\Scripts\\python.exe -B -m unittest discover -s vision\\tests -p test*.py",
+    "backendContractTests": "& .\\backend\\.venv\\Scripts\\python.exe -B -m unittest discover -s vision\\tests -p test_backend_contract.py",
+    "realModelTestNote": "Opt-in smoke uses a tiny synthetic JPEG fixture, not a people-count benchmark. It blocks network connections and verifies the actual CPU model measures exactly the pixels decoded from the unchanged uploaded bytes. The existing 24-frame media pilot is separate."
+  },
+  "sampling": {
+    "cameras": ["camera-denim", "camera-essentials", "camera-checkout"],
+    "oneCameraPerTick": true,
+    "durationSeconds": 60,
+    "clock": {"id": "clock", "pk": "store-demo"},
+    "request": {"id": "vision-request", "pk": "store-demo"},
+    "activation": "activeUntil must be in the future; otherwise a same-epoch request aged 0 to less than 30 seconds grants one attempt per camera in this worker process",
+    "requests": "New timestamps supersede older requests; successful or unavailable publication consumes that camera's request. Requests are not mutated. Restart can reprocess an unexpired request.",
+    "source": "Continuous clock helper: running (elapsedSeconds + max(0, now-updatedAt) * speed) % 60; paused elapsedSeconds % 60. Worker floors to 15 fps PTS with floor(seconds * 15) / 15, bounded to frame 899. Extraction and observation sourceSeconds use that PTS; 59.999 samples 59.93333333333333.",
+    "staleGuard": "Re-read clock/request after download, before inference, after inference before warming publication, after warming before Blob upload, and after upload before final Cosmos upsert. Discard changed epoch/layout/variant and expired or superseded request-only work.",
+    "crossServiceWrites": "Allocate the ready observation ID before upload. Before overwriting frames/{cameraId}.jpg, successfully publish a guarded warming observation with people null, detections [], frameUri null and the epoch/layout/variant envelope. Upload JPEG bytes and metadata {observationid: readyObservation.id} atomically in one upload_blob call, then persist that same ready observation ID in Cosmos. Failed warming publication prevents upload. Stale work after upload or a rejected final Cosmos write leaves warming; upload errors publish unavailable with no counts. A timed-out write may have committed. Backend must require ?observation=<id>, compare metadata.observationid, download the same ETag with IfNotModified, and return X-Vitrine-Observation-Id only for matching bytes. A replaced frame must fail closed, never fall back to latest bytes. frameSha256 is diagnostic only. Clock changes during final network writes remain possible; backend epoch/layout filtering is required. No distributed worker lease: stop-before-start updates are mandatory."
+  },
+  "media": {
+    "privateBlob": "media/{cameraId}/{variant}.mp4",
+    "variants": ["baseline", "optimized"],
+    "cacheDirectory": "vision/.cache/media",
+    "cacheMaximumBytes": 268435456,
+    "cacheMaximumFileBytes": 67108864,
+    "cacheMaximumEntries": 6,
+    "cacheTtlSeconds": 300,
+    "cachePolicy": "LRU eviction with space reserved before streaming; conditional ETag download; oversized/partial downloads discarded; owned leftover artifacts cleared on startup",
+    "extractor": "ffmpeg accurate seek at max(0, quantized sourceSeconds - 0.000001), formatted to six decimals so rounding never seeks past the target PTS; one JPEG, aspect-ratio-preserving 1280x720 bounds, 20-second timeout",
+    "uploadedBlob": "frames/{cameraId}.jpg",
+    "uploadedMetadata": {"observationid": "<ready observation.id>"},
+    "frameUri": "/api/vision/frames/{cameraId}.jpg",
+    "frameRequest": "/api/vision/frames/{cameraId}.jpg?observation=<observation.id>",
+    "pixelIdentity": "Decode extracted JPEG for inference, then upload the identical JPEG bytes without re-encoding."
+  },
+  "qualitativeVision": {
+    "implemented": false,
+    "reservedEnvironment": ["AZURE_OPENAI_ENDPOINT", "VISION_MODEL_DEPLOYMENT"],
+    "note": "Optional direct GPT qualitative vision is deliberately omitted. No GPT calls occur. Person counts and boxes come only from RT-DETR; backend-hosted Foundry agents are a separate component."
+  },
+  "failure": {
+    "status": "unavailable",
+    "people": null,
+    "detections": [],
+    "frameUri": null,
+    "errors": "All caught stage failures, including those published as unavailable, emit explicit allowlisted vision_error codes only; no URLs, tokens or exception/SDK messages",
+    "clockUnavailable": "Stop sampling; never substitute a local clock or overwrite with guessed epoch/layout."
+  }
+}

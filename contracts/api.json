@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "wireTypes": "../frontend/src/types.ts",
+  "origin": "same-origin",
+  "authentication": "HttpOnly Secure SameSite=Strict signed session cookie; Origin validation for writes",
+  "endpoints": {
+    "GET /health": "Public process readiness; 503 on unavailable initialized dependencies",
+    "GET /api/config": "PublicConfig",
+    "GET /api/session": "{authenticated:boolean}",
+    "POST /api/session": "{password:string} -> {authenticated:true}; never log password",
+    "DELETE /api/session": "Clear current session",
+    "GET /api/snapshot": "Snapshot; authenticated; refresh roughly every 2 seconds",
+    "POST /api/scenario/control": "{action:'pause'|'resume'|'reset',speed?:1|2|5} -> Snapshot; reset clears only current synthetic scenario, not media or agent definitions",
+    "POST /api/agents/run": "{agent:'merchandising'|'experiment',question:string} -> 202 AgentRun; actual managed Foundry execution",
+    "GET /api/agents/runs/{id}": "AgentRun",
+    "POST /api/interventions": "{runId:string,recommendationId:string,actionId:ActionId} -> Intervention; only completed current-scenario recommendation; explicit human approval required",
+    "POST /api/vision/analyze": "202 {requested:true}; request fresh sampled inference without generating fake observations",
+    "GET /api/media/{cameraId}/{variant}.mp4": "Authorized synthetic MP4 with byte-range support",
+    "GET /api/vision/frames/{cameraId}.jpg": "Authorized frame; observation query parameter requires exact image/observation match. X-Vitrine-Observation-Id response header must identify the bytes served. No arbitrary paths or unfenced latest-frame fallback."
+  },
+  "errors": "{error:string,detail?:string}; 401 unauthenticated, 403 origin, 409 stale/conflict, 429 rate_limit, 503 external_service_unavailable",
+  "provenanceRules": [
+    "All source videos are original synthetic store footage, not real customer cameras.",
+    "POS and visitor/dwell metrics are explicitly simulated and never claimed as camera measurements.",
+    "Detections must come from actual RT-DETRv2 inference; raw simulator locations are evaluation-only.",
+    "Box coordinates are normalized xyxy for frameUri and sourceSeconds, not for arbitrary current video frames.",
+    "A failed inference has people:null and unavailable status, never a fake zero count.",
+    "No face identification, demographics, emotional state or cross-camera person identity.",
+    "Interventions change only simulated layout and simulated sales parameters; no demonstrated real-world causal uplift.",
+    "Agents are persisted named prompt agents invoked by agent_reference on the Foundry project Responses endpoint.",
+    "Simulation clock and frame timestamp are explicit; physical camera count and simulated conversion denominators are distinct."
+  ]
+}

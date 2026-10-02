@@ -1,0 +1,23 @@
+RT-DETRv2-R18 detector weights and model attribution
+
+Upstream: https://github.com/lyuwenyu/RT-DETR
+Weights: https://huggingface.co/PekingU/rtdetr_v2_r18vd
+Pinned revision: 5650961749fa93567c0d46fc7f43ea4f9e914107
+Model card license declaration:
+https://huggingface.co/PekingU/rtdetr_v2_r18vd/blob/5650961749fa93567c0d46fc7f43ea4f9e914107/README.md
+
+License: Apache License, Version 2.0 (rt-detr-apache-2.0.txt).
+Authors of RT-DETRv2: Wenyu Lv, Yian Zhao, Qinyao Chang, Kui Huang,
+Guanzhong Wang, Yi Liu.
+Hugging Face model conversion contributions: jadechoghari, cyrilvallez,
+qubvel-hf, as credited by the pinned model card.
+
+The VITRINE image includes an unmodified-weight reserialization of
+the pinned checkpoint into safetensors using Transformers save_pretrained.
+No fine-tuning is performed. The build manifest binds local artifact hashes
+to the model ID and source revision. The inference implementation is provided
+by Hugging Face Transformers under its Apache-2.0 package license.
+
+This worker's deployment image does not contain Blender, MPFB, human meshes,
+authoring source archives, or local authoring environments. The store footage
+is rendered separately from original scene geometry and CC0 human assets.

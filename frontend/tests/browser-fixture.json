@@ -1,0 +1,40 @@
+{
+  "serverTime": "2026-10-01T20:00:00Z",
+  "revision": 1,
+  "store": { "id": "test-store", "name": "Loja conceito", "areaM2": 280, "description": "Fixture exclusiva de teste automatizado" },
+  "scenario": { "id": "test-scenario", "state": "running", "elapsedSeconds": 360, "speed": 1, "layoutVersion": 1, "simulation": true, "activeSince": "2026-10-01T20:00:00Z", "label": "Teste" },
+  "metrics": { "revenueCents": 148950, "transactions": 12, "units": 18, "averageBasketCents": 12412, "simulatedVisits": 48, "provenance": "simulated-pos" },
+  "zones": [
+    { "id": "denim", "name": "Denim", "collection": "Coleção teste", "colorRole": "accent", "visitors": 18, "dwellSeconds": 45, "revenueCents": 50000, "units": 4, "availableSizes": ["P", "M", "G"], "stockStatus": "available", "observation": "Observação simulada para teste", "provenance": "simulation" },
+    { "id": "essentials", "name": "Essenciais", "collection": "Coleção teste", "colorRole": "accent", "visitors": 22, "dwellSeconds": 30, "revenueCents": 65000, "units": 6, "availableSizes": ["P", "M"], "stockStatus": "limited", "observation": "Observação simulada para teste", "provenance": "simulation" },
+    { "id": "checkout", "name": "Caixa", "collection": "Coleção teste", "colorRole": "accent", "visitors": 8, "dwellSeconds": 60, "revenueCents": 33950, "units": 8, "availableSizes": [], "stockStatus": "available", "observation": "Observação simulada para teste", "provenance": "simulation" }
+  ],
+  "cameras": [
+    { "id": "cam-1", "name": "Denim / visão ampla", "zoneId": "denim", "mediaUri": "/api/media/cam-1/baseline.mp4", "variant": "baseline", "durationSeconds": 60, "sourceSeconds": 12, "footage": "synthetic-3d",
+      "vision": { "id": "vision-test-0", "cameraId": "cam-1", "status": "ready", "observedAt": "2026-10-01T20:00:00Z", "sourceSeconds": 10, "people": 1, "detections": [{ "label": "person", "score": 0.91, "box": [0.2, 0.2, 0.4, 0.8] }], "frameUri": "/api/vision/frames/cam-1.jpg", "latencyMs": 124, "model": "RT-DETRv2", "modelRevision": "test-revision", "provenance": "model-inference", "error": null } },
+    { "id": "cam-2", "name": "Essenciais / coleção", "zoneId": "essentials", "mediaUri": "/api/media/cam-2/baseline.mp4", "variant": "baseline", "durationSeconds": 60, "sourceSeconds": 12, "footage": "synthetic-3d",
+      "vision": { "id": "vision-test-1", "cameraId": "cam-2", "status": "unavailable", "observedAt": null, "sourceSeconds": null, "people": null, "detections": [], "frameUri": null, "latencyMs": null, "model": "RT-DETRv2", "modelRevision": "test-revision", "provenance": "model-inference", "error": "Serviço indisponível neste teste" } },
+    { "id": "cam-3", "name": "Caixa / saída", "zoneId": "checkout", "mediaUri": "/api/media/cam-3/baseline.mp4", "variant": "baseline", "durationSeconds": 60, "sourceSeconds": 12, "footage": "synthetic-3d",
+      "vision": { "id": "vision-test-2", "cameraId": "cam-3", "status": "warming", "observedAt": null, "sourceSeconds": null, "people": null, "detections": [], "frameUri": null, "latencyMs": null, "model": "RT-DETRv2", "modelRevision": "test-revision", "provenance": "model-inference", "error": null } }
+  ],
+  "posEvents": [
+    { "id": "receipt-test-1", "at": "2026-10-01T20:00:00Z", "elapsedSeconds": 340, "sku": "TEST-DENIM-01", "item": "Calça wide leg denim", "zoneId": "denim", "size": "M", "units": 1, "amountCents": 15990, "type": "sale", "provenance": "simulated-pos" }
+  ],
+  "series": [
+    { "at": "2026-10-01T20:00:00Z", "elapsedSeconds": 0, "revenueCents": 0, "transactions": 0, "controlRevenueCents": 0, "visits": 0 },
+    { "at": "2026-10-01T20:01:00Z", "elapsedSeconds": 60, "revenueCents": 24825, "transactions": 2, "controlRevenueCents": 21100, "visits": 8 },
+    { "at": "2026-10-01T20:02:00Z", "elapsedSeconds": 120, "revenueCents": 49650, "transactions": 4, "controlRevenueCents": 42200, "visits": 16 },
+    { "at": "2026-10-01T20:03:00Z", "elapsedSeconds": 180, "revenueCents": 74475, "transactions": 6, "controlRevenueCents": 63300, "visits": 24 },
+    { "at": "2026-10-01T20:04:00Z", "elapsedSeconds": 240, "revenueCents": 99300, "transactions": 8, "controlRevenueCents": 84400, "visits": 32 },
+    { "at": "2026-10-01T20:05:00Z", "elapsedSeconds": 300, "revenueCents": 124125, "transactions": 10, "controlRevenueCents": 105500, "visits": 40 },
+    { "at": "2026-10-01T20:06:00Z", "elapsedSeconds": 360, "revenueCents": 148950, "transactions": 12, "controlRevenueCents": 126600, "visits": 48 }
+  ],
+  "availableActions": [
+    { "id": "reposition-denim", "title": "Reorientar araras de denim", "description": "Girar as araras do cenário sintético para liberar a circulação.", "zoneId": "denim", "guardrails": ["Somente no ambiente simulado"], "applied": false }
+  ],
+  "interventions": [],
+  "agentRuns": [],
+  "experiment": { "status": "not-started", "interventionAt": null, "beforeRevenuePer100Visits": null, "afterRevenuePer100Visits": null, "controlChangePercent": null, "relativeChangePercent": null, "beforeTransactions": 0, "afterTransactions": 0, "caveat": "Aguardando dados suficientes." },
+  "services": { "foundry": "configured", "vision": "ready", "persistence": "local", "footageReady": false },
+  "notices": ["Dados exclusivos de teste automatizado."]
+}

@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /app
+RUN pip install --no-cache-dir azure-identity==1.26.0 azure-storage-blob==12.31.0
+COPY scripts/seed-media.py scripts/seed-media.py
+COPY assets/generated/ assets/generated/
+RUN useradd --create-home --uid 10001 seed
+USER seed
+CMD ["python", "scripts/seed-media.py"]

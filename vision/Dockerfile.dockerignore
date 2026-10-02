@@ -1,0 +1,13 @@
+**
+!vision
+vision/**
+!vision/*.py
+!vision/requirements.txt
+!vision/run-config.json
+!vision/Dockerfile
+!vision/Dockerfile.dockerignore
+!vision/licenses
+!vision/licenses/*.txt
+vision/authoring
+vision/tests
+vision/.cache
