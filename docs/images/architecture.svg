@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="1110" viewBox="0 0 1540 1110" role="img" aria-labelledby="title desc"><title id="title">VITRINE — arquitetura do ciclo de decisão</title><desc id="desc">Vídeos e PDV sintéticos; inferência e agentes reais. Execução inteiramente na nuvem, sem componente na loja.</desc><defs><marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1864ab" stroke-width="1.5"/></marker><marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2f9e44" stroke-width="1.5"/></marker><marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#e67700" stroke-width="1.5"/></marker><marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#495057" stroke-width="1.5"/></marker></defs><rect width="1540" height="1110" fill="#ffffff"/><g font-family="Segoe UI,Arial,sans-serif"><text x="35" y="52" font-size="28" font-weight="650" fill="#000000"><tspan x="35" dy="0">VITRINE — arquitetura do ciclo de decisão</tspan></text>
+<text x="35" y="97" font-size="17" font-weight="400" fill="#000000"><tspan x="35" dy="0">Vídeos e PDV sintéticos; inferência e agentes reais. Execução inteiramente na nuvem, sem componente na loja.</tspan></text>
+<rect x="465" y="145" width="610" height="140" rx="12" fill="#dbeafe" stroke="#1864ab" stroke-width="1.5"/>
+<text x="483" y="180" font-size="20" font-weight="650" fill="#000000"><tspan x="483" dy="0">Workspace React + pessoa responsável</tspan></text>
+<text x="483" y="214" font-size="16" font-weight="400" fill="#000000"><tspan x="483" dy="0">Streams, evidências, PDV e comparação de períodos</tspan><tspan x="483" dy="40">Aprovação explícita antes de alterar a simulação</tspan></text>
+<rect x="30" y="340" width="720" height="405" rx="12" fill="none" stroke="#1864ab" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="50" y="371" font-size="17" font-weight="650" fill="#000000"><tspan x="50" dy="0">AZURE CONTAINER APPS / VNET PRÓPRIA</tspan></text>
+<rect x="55" y="410" width="330" height="285" rx="12" fill="#dbeafe" stroke="#1864ab" stroke-width="1.5"/>
+<text x="73" y="445" font-size="20" font-weight="650" fill="#000000"><tspan x="73" dy="0">API / FastAPI</tspan></text>
+<text x="73" y="479" font-size="16" font-weight="400" fill="#000000"><tspan x="73" dy="0">Sessão + mídia autorizada</tspan><tspan x="73" dy="40">Relógio e PDV simulados</tspan><tspan x="73" dy="40">Contexto e auditoria</tspan><tspan x="73" dy="40">Valida e aplica aprovação</tspan></text>
+<rect x="415" y="410" width="310" height="285" rx="12" fill="#dcfce7" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="433" y="445" font-size="20" font-weight="650" fill="#000000"><tspan x="433" dy="0">Worker de visão / CPU</tspan></text>
+<text x="433" y="479" font-size="16" font-weight="400" fill="#000000"><tspan x="433" dy="0">FFmpeg → JPEG amostrado</tspan><tspan x="433" dy="40">RT-DETRv2 → pessoas/caixas</tspan><tspan x="433" dy="40">GPT-5.4 → leitura visual</tspan><tspan x="433" dy="40">Somente enquanto ativo</tspan></text>
+<rect x="800" y="340" width="710" height="405" rx="12" fill="none" stroke="#2f9e44" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="820" y="371" font-size="17" font-weight="650" fill="#000000"><tspan x="820" dy="0">MICROSOFT FOUNDRY / CONTA E PROJETO</tspan></text>
+<rect x="825" y="410" width="310" height="285" rx="12" fill="#dcfce7" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="843" y="445" font-size="20" font-weight="650" fill="#000000"><tspan x="843" dy="0">Prompt agents gerenciados</tspan></text>
+<text x="843" y="479" font-size="16" font-weight="400" fill="#000000"><tspan x="843" dy="0">Merchandising + avaliação</tspan><tspan x="843" dy="40">GPT-4.1 / versões fixadas</tspan><tspan x="843" dy="40">read_demo_context</tspan><tspan x="843" dy="40">Propõem; não executam</tspan></text>
+<rect x="1165" y="410" width="320" height="285" rx="12" fill="#dcfce7" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="1183" y="445" font-size="20" font-weight="650" fill="#000000"><tspan x="1183" dy="0">Deployment multimodal</tspan></text>
+<text x="1183" y="479" font-size="16" font-weight="400" fill="#000000"><tspan x="1183" dy="0">GPT-5.4 / retail-vision</tspan><tspan x="1183" dy="40">Recebe pixels do frame</tspan><tspan x="1183" dy="40">Descreve a exposição</tspan><tspan x="1183" dy="40">Não mede vendas ou fluxo</tspan></text>
+<polyline points="645,285 645,315 220,315 220,410" fill="none" stroke="#1864ab" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<text x="65" y="304" font-size="15" font-weight="400" fill="#000000"><tspan x="65" dy="0">HTTPS + sessão</tspan></text>
+<polyline points="570,695 570,720 1305,720 1305,695" fill="none" stroke="#2f9e44" stroke-width="2" marker-end="url(#arrow-green)"/>
+<text x="810" y="711" font-size="14" font-weight="400" fill="#000000"><tspan x="810" dy="0">JPEG + autenticação Entra</tspan></text>
+<polyline points="385,490 400,490 400,388 795,388 795,490 825,490" fill="none" stroke="#2f9e44" stroke-width="2" marker-end="url(#arrow-green)"/>
+<text x="445" y="332" font-size="14" font-weight="400" fill="#000000"><tspan x="445" dy="0">agent_reference / ferramenta somente leitura</tspan></text>
+<rect x="55" y="815" width="455" height="170" rx="12" fill="#f1f3f5" stroke="#495057" stroke-width="1.5"/>
+<text x="73" y="850" font-size="20" font-weight="650" fill="#000000"><tspan x="73" dy="0">Cosmos DB for NoSQL</tspan></text>
+<text x="73" y="884" font-size="16" font-weight="400" fill="#000000"><tspan x="73" dy="0">Estado + relógio + observações + execuções</tspan><tspan x="73" dy="40">ETag, versão do layout e outbox de auditoria</tspan><tspan x="73" dy="40">Persistência canônica; não é um grafo</tspan></text>
+<rect x="545" y="815" width="455" height="170" rx="12" fill="#f1f3f5" stroke="#495057" stroke-width="1.5"/>
+<text x="563" y="850" font-size="20" font-weight="650" fill="#000000"><tspan x="563" dy="0">Blob Storage privado</tspan></text>
+<text x="563" y="884" font-size="16" font-weight="400" fill="#000000"><tspan x="563" dy="0">Seis MP4 originais: 3 câmeras × 2 layouts</tspan><tspan x="563" dy="40">JPEG + ID da observação + ETag</tspan><tspan x="563" dy="40">Caixas somente no frame correspondente</tspan></text>
+<rect x="1035" y="815" width="450" height="170" rx="12" fill="#f1f3f5" stroke="#495057" stroke-width="1.5"/>
+<text x="1053" y="850" font-size="20" font-weight="650" fill="#000000"><tspan x="1053" dy="0">Serviços de plataforma</tspan></text>
+<text x="1053" y="884" font-size="16" font-weight="400" fill="#000000"><tspan x="1053" dy="0">ACR / imagens independentes</tspan><tspan x="1053" dy="40">Key Vault / senha da demonstração</tspan><tspan x="1053" dy="40">Managed Identity / DNS / Log Analytics</tspan></text>
+<polyline points="220,695 220,815" fill="none" stroke="#495057" stroke-width="2" marker-end="url(#arrow-gray)"/>
+<polyline points="570,695 570,775 400,775 400,815" fill="none" stroke="#495057" stroke-width="2" marker-end="url(#arrow-gray)"/>
+<polyline points="705,695 705,815" fill="none" stroke="#495057" stroke-width="2" marker-end="url(#arrow-gray)"/>
+<polyline points="350,695 350,758 850,758 850,815" fill="none" stroke="#495057" stroke-width="2" marker-end="url(#arrow-gray)"/>
+<text x="55" y="1026" font-size="16" font-weight="400" fill="#000000"><tspan x="55" dy="0">Private Endpoints: Blob, Cosmos, Key Vault e Foundry. ACR usa endpoint público autenticado; UI usa HTTPS autenticado.</tspan><tspan x="55" dy="40">Foundry Basic: armazenamento de agentes gerenciado pelo serviço; Private Link de entrada não equivale a isolamento de saída BYO VNet.</tspan></text></g></svg>

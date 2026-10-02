@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "repository": "aljannuzzi/vitrine-retail-intelligence",
+  "release": "demo-media-v1",
+  "asset": "vitrine-synthetic-store-media-v1.zip",
+  "sha256": "88f5b2c34fc43639f3c579e53594e92b2abb0a65452f9464bf0187fe47a22d35",
+  "description": "Seis videos 3D originais de uma loja ficticia. Nenhum video de clientes ou pessoa real fotografada.",
+  "expectedFiles": [
+    "camera-checkout-baseline.mp4",
+    "camera-checkout-optimized.mp4",
+    "camera-denim-baseline.mp4",
+    "camera-denim-optimized.mp4",
+    "camera-essentials-baseline.mp4",
+    "camera-essentials-optimized.mp4",
+    "manifest.json",
+    "human-license-manifest.json",
+    "asset-license-manifest.json"
+  ],
+  "videoProfile": {
+    "cameras": 3,
+    "variants": 2,
+    "durationSeconds": 60,
+    "width": 1280,
+    "height": 720,
+    "fps": 15
+  },
+  "rights": {
+    "sceneAndAnimation": "Conteudo original produzido para esta demonstracao.",
+    "humanMeshesAndClothing": "CC0-1.0; fontes, licencas e hashes no pacote.",
+    "authoringTools": "Blender e MPFB nao incluidos; ferramentas de autoria GPL permanecem separadas dos renders.",
+    "detector": "Pesos nao incluidos neste pacote. RT-DETRv2 e obtido de sua origem publica durante o build."
+  }
+}

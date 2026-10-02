@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="1120" viewBox="0 0 1540 1120" role="img" aria-labelledby="title desc"><title id="title">Da observação à intervenção — sem confundir inferência com efeito</title><desc id="desc">Cada etapa preserva a origem da informação. A aprovação não transforma uma hipótese em prova de causalidade.</desc><defs><marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1864ab" stroke-width="1.5"/></marker><marker id="arrow-green" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2f9e44" stroke-width="1.5"/></marker><marker id="arrow-orange" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#e67700" stroke-width="1.5"/></marker><marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#495057" stroke-width="1.5"/></marker></defs><rect width="1540" height="1120" fill="#ffffff"/><g font-family="Segoe UI,Arial,sans-serif"><text x="35" y="52" font-size="28" font-weight="650" fill="#000000"><tspan x="35" dy="0">Da observação à intervenção — sem confundir inferência com efeito</tspan></text>
+<text x="35" y="97" font-size="17" font-weight="400" fill="#000000"><tspan x="35" dy="0">Cada etapa preserva a origem da informação. A aprovação não transforma uma hipótese em prova de causalidade.</tspan></text>
+<rect x="40" y="150" width="440" height="170" rx="12" fill="#dbeafe" stroke="#1864ab" stroke-width="1.5"/>
+<text x="58" y="185" font-size="20" font-weight="650" fill="#000000"><tspan x="58" dy="0">1 / Fonte visual sintética</tspan></text>
+<text x="58" y="219" font-size="16" font-weight="400" fill="#000000"><tspan x="58" dy="0">Replay de MP4s originais de uma loja 3D</tspan><tspan x="58" dy="40">O vídeo está no Azure; não é uma câmera real</tspan><tspan x="58" dy="40">Versão inicial ou rearranjada do cenário</tspan></text>
+<rect x="550" y="150" width="440" height="170" rx="12" fill="#dcfce7" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="568" y="185" font-size="20" font-weight="650" fill="#000000"><tspan x="568" dy="0">2 / Percepção real</tspan></text>
+<text x="568" y="219" font-size="16" font-weight="400" fill="#000000"><tspan x="568" dy="0">RT-DETRv2: pessoas visíveis e caixas</tspan><tspan x="568" dy="40">GPT-5.4: descrição da exposição</tspan><tspan x="568" dy="40">Frame, instante, modelo e limitações</tspan></text>
+<rect x="1060" y="150" width="440" height="170" rx="12" fill="#fff3bf" stroke="#e67700" stroke-width="1.5"/>
+<text x="1078" y="185" font-size="20" font-weight="650" fill="#000000"><tspan x="1078" dy="0">Fonte operacional simulada</tspan></text>
+<text x="1078" y="219" font-size="16" font-weight="400" fill="#000000"><tspan x="1078" dy="0">Vendas, devoluções, estoque e visitas</tspan><tspan x="1078" dy="40">Relógio determinístico + eventos do PDV</tspan><tspan x="1078" dy="40">Não são medidas inferidas pela câmera</tspan></text>
+<polyline points="480,235 550,235" fill="none" stroke="#1864ab" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<rect x="350" y="420" width="840" height="155" rx="12" fill="#f1f3f5" stroke="#495057" stroke-width="1.5"/>
+<text x="368" y="455" font-size="20" font-weight="650" fill="#000000"><tspan x="368" dy="0">3 / Contexto autorizado e versionado</tspan></text>
+<text x="368" y="489" font-size="16" font-weight="400" fill="#000000"><tspan x="368" dy="0">Observações reais + métricas sintéticas, com proveniência distinta</tspan><tspan x="368" dy="40">Epoch e layout impedem reutilizar evidência de outro cenário</tspan><tspan x="368" dy="40">read_demo_context devolve um retrato limitado, imutável e somente leitura</tspan></text>
+<polyline points="770,320 770,420" fill="none" stroke="#2f9e44" stroke-width="2" marker-end="url(#arrow-green)"/>
+<polyline points="1280,320 1280,365 1100,365 1100,420" fill="none" stroke="#e67700" stroke-width="2" marker-end="url(#arrow-orange)"/>
+<rect x="40" y="665" width="440" height="180" rx="12" fill="#dcfce7" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="58" y="700" font-size="20" font-weight="650" fill="#000000"><tspan x="58" dy="0">4 / Agente de merchandising</tspan></text>
+<text x="58" y="734" font-size="16" font-weight="400" fill="#000000"><tspan x="58" dy="0">Formula uma hipótese operacional</tspan><tspan x="58" dy="40">Cita evidências e ressalvas</tspan><tspan x="58" dy="40">Não possui ferramenta para alterar a loja</tspan></text>
+<rect x="550" y="665" width="440" height="180" rx="12" fill="#dbeafe" stroke="#1864ab" stroke-width="1.5"/>
+<text x="568" y="700" font-size="20" font-weight="650" fill="#000000"><tspan x="568" dy="0">5 / Aprovação humana</tspan></text>
+<text x="568" y="734" font-size="16" font-weight="400" fill="#000000"><tspan x="568" dy="0">Confirma ação do catálogo, cenário e layout</tspan><tspan x="568" dy="40">Registra intervenção e a execução de origem</tspan><tspan x="568" dy="40">Troca o layout e os parâmetros simulados</tspan></text>
+<rect x="1060" y="665" width="440" height="180" rx="12" fill="#dcfce7" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="1078" y="700" font-size="20" font-weight="650" fill="#000000"><tspan x="1078" dy="0">6 / Agente de avaliação</tspan></text>
+<text x="1078" y="734" font-size="16" font-weight="400" fill="#000000"><tspan x="1078" dy="0">Lê antes / depois / controle virtual</tspan><tspan x="1078" dy="40">Explica amostra e restrições</tspan><tspan x="1078" dy="40">Sem prometer ganho causal real</tspan></text>
+<polyline points="420,575 260,575 260,665" fill="none" stroke="#495057" stroke-width="2" marker-end="url(#arrow-gray)"/>
+<polyline points="480,755 550,755" fill="none" stroke="#1864ab" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<polyline points="990,755 1060,755" fill="none" stroke="#1864ab" stroke-width="2" marker-end="url(#arrow-blue)"/>
+<polyline points="1280,665 1280,610 1120,610 1120,575" fill="none" stroke="#495057" stroke-width="2" marker-end="url(#arrow-gray)" stroke-dasharray="6 5"/>
+<text x="1200" y="607" font-size="14" font-weight="400" fill="#000000"><tspan x="1200" dy="0">novo contexto</tspan></text>
+<rect x="40" y="935" width="1460" height="135" rx="12" fill="#fff3bf" stroke="#e67700" stroke-width="1.5"/>
+<text x="58" y="970" font-size="20" font-weight="650" fill="#000000"><tspan x="58" dy="0">Limite da demonstração</tspan></text>
+<text x="58" y="1004" font-size="16" font-weight="400" fill="#000000"><tspan x="58" dy="0">O detector não mede compradores únicos, permanência ou conversão. O PDV e o controle são sintéticos.</tspan><tspan x="58" dy="40">As janelas de 60 segundos ilustram o mecanismo. Uma loja real exige integração, governança e desenho experimental adequado.</tspan></text></g></svg>
